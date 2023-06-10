@@ -196,6 +196,8 @@
         });
     }
     $('.add').on('click', function(event) {
+        $('#no_trx').val("").trigger('change');
+                $('#no_akun').val("").trigger('change');
         $('.modal-title').text('Tambah data Jurnal');
         $('input').val('');
         event.preventDefault();
@@ -272,7 +274,7 @@
         })
     })
     $('tbody').on('click', '.edit', function(event) {
-        $('.modal-title').text('Ubah data User');
+        $('.modal-title').text('Ubah data jurnal');
         $('form#formuser input').removeClass('is-invalid is-valid');
         $('.error').hide();
         $('#other').show();

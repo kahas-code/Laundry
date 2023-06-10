@@ -39,6 +39,37 @@
         display: table-cell;
         padding-right: 1em;
     }
+
+    .dt-button {
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+            border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        color: #000;
+        background-color: #0dcaf0;
+        border-color: #0dcaf0;
+    }
+
+    .dt-button:hover {
+        color: #000;
+        background-color: #31d2f2;
+        border-color: #25cff2;
+
+    }
 </style>
 
 <div class="row">
@@ -118,6 +149,16 @@
                 targets: [2, 3, 4, 5, 6, 7],
                 orderable: false,
             }],
+            dom: 'Blfrtip',
+            buttons: [{
+                    extend: 'pdf',
+                    text: 'Export pdf',
+                    exportOptions: {
+                        columns: [0, 1] // Column index which needs to export
+                    }
+                },
+
+            ]
 
         });
     }

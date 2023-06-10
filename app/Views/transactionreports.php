@@ -20,6 +20,37 @@
     .error {
         color: red;
     }
+
+    .dt-button {
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+            border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        color: #000;
+        background-color: #0dcaf0;
+        border-color: #0dcaf0;
+    }
+
+    .dt-button:hover {
+        color: #000;
+        background-color: #31d2f2;
+        border-color: #25cff2;
+
+    }
 </style>
 
 <div class="row">
@@ -43,12 +74,12 @@
                         </div>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-success mt-3 cetak">Cetak</button>
+                        <button type="button" class="btn btn-success mt-3 cetak">Filter</button>
                     </div>
                 </div>
             </div>
             <div class="card-body p-0">
-                <table class="table mt-5" style="max-width: 100%; min-width:100%" id="tb-transactions">
+                <table class="table mt-5 " style="max-width: 100%; min-width:100%" id="tb-transactions">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -102,9 +133,19 @@
 
             },
             columnDefs: [{
-                targets: [2, 3, 4, 5,6],
+                targets: [2, 3, 4, 5, 6],
                 orderable: false,
             }],
+            dom: 'Blfrtip',
+            buttons: [{
+                    extend: 'pdf',
+                    text: 'Export PDF',
+                    exportOptions: {
+                        columns: [0, 1] // Column index which needs to export
+                    }
+                },
+
+            ]
 
         });
     }

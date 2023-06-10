@@ -354,7 +354,8 @@
             data: {
                 type: 'user'
             },
-            success: function(data) {
+            success: function(data) { 
+                console.log(data);
                 $.each(data, function(index, value) {
                     $('input[name="' + index + '"]').val(value);
                 })

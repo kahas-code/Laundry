@@ -240,6 +240,7 @@
                 type: 'layanan'
             },
             success: function(data) {
+                console.log(data);
                 $.each(data, function(index, value) {
                     $('input[name="' + index + '"]').val(value);
                 })

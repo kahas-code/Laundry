@@ -116,7 +116,6 @@ class DataController extends BaseController
             }
         } else {
             try {
-                $post['updated_at'] = date('Y-m-d H:i:s');
                 $proses = $this->db->update($id, $post);
             } catch (\Exception $e) {
                 $result = [
@@ -139,20 +138,16 @@ class DataController extends BaseController
         if ($type == 'user') {
             $this->db = new UserModel();
             $field = 'id_user';
-        }
-        if ($type == 'layanan') {
+        }else if ($type == 'layanan') {
             $this->db = new ServicesModel();
             $field = 'id_layanan';
-        }
-        if ($type == 'pelanggan') {
+        }else if ($type == 'pelanggan') {
             $this->db = new CostumerModel();
             $field = 'id_customer';
-        }
-        if ($type == 'akun') {
+        }else if ($type == 'akun') {
             $this->db = new AkunModel();
             $field = 'id_akun';
-        }
-        if ($type = 'jurnal') {
+        }else if ($type = 'jurnal') {
             $this->db = new JournalModel();
             $field = 'id_journal';
         }
@@ -176,24 +171,21 @@ class DataController extends BaseController
         if ($type == 'user') {
             $this->db = new UserModel();
             $field = 'id_user';
-        }
-        if ($type == 'layanan') {
+        }else if ($type == 'layanan') {
             $this->db = new ServicesModel();
             $field = 'id_service';
-        }
-        if ($type == 'pelanggan') {
+        }else if ($type == 'pelanggan') {
             $this->db = new CostumerModel();
             $field = 'id_costumer';
-        }
-        if ($type == 'akun') {
+        }else if ($type == 'akun') {
             $this->db = new AkunModel();
             $field = 'id_akun';
-        }
-        if ($type = 'jurnal') {
+        }else if ($type = 'jurnal') {
             $this->db = new JournalModel();
             $field = 'id_journal';
         }
         try {
+           
             $data = $this->db->where($field, $id)->get()->getRow();
         } catch (\Exception $err) {
             return $err->getMessage();
