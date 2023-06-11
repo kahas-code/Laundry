@@ -76,14 +76,14 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
     $routes->post('/transaksi/storejurnal', 'TransactionController::SimpanJurnal');
     $routes->post('/transaksi/storejurnal/(:num)', 'TransactionController::SimpanJurnal/$1');
 
-    
+
     // routing menu laporan transaksi
     $routes->get('/laporan/transaksi', 'ReportController::ViewTransactions');
     $routes->post('/laporan/datalaporantransaksi', 'ReportController::TransactionData');
 
     // routing menu laporan jurnal umum
     $routes->get('/laporan/jurnalumum', 'ReportController::ViewJournal');
-    
+    $routes->post('/laporan/datajurnal', 'ReportController::JournalData');
 });
 
 /*

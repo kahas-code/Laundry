@@ -83,6 +83,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Nomor Transaksi</th>
                             <th>Nama Pelanggan</th>
                             <th>Kode Layanan</th>
                             <th>Harga Layanan</th>
@@ -133,15 +134,16 @@
 
             },
             columnDefs: [{
-                targets: [2, 3, 4, 5, 6],
+                targets: [1,2, 3, 4, 5, 6, 7],
                 orderable: false,
             }],
             dom: 'Blfrtip',
             buttons: [{
                     extend: 'pdf',
                     text: 'Export PDF',
+                    title: 'Laporan Transaksi',
                     exportOptions: {
-                        columns: [0, 1] // Column index which needs to export
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7] // Column index which needs to export
                     }
                 },
 

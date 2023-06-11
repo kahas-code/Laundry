@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="col">
-                        <button type="button" class="btn btn-success mt-3 cetak">Cetak</button>
+                        <button type="button" class="btn btn-success mt-3 cetak">Filter</button>
                     </div>
                 </div>
             </div>
@@ -97,14 +97,13 @@
                 <table class="table mt-5" style="max-width: 100%; min-width:100%" id="tb-jurnal">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>Tanggal</th>
                             <th>Nomor Jurnal</th>
-                            <th>Nama Akun</th>
                             <th>Nomor Transaksi</th>
-                            <th>Keterangan</th>
-                            <th>Tanggal Jurnal</th>
+                            <th>Nama Akun</th>
                             <th>Kredit</th>
                             <th>Debit</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -136,7 +135,7 @@
             "paging": false,
             "order": [],
             "ajax": {
-                "url": url + "transaksi/datajurnal",
+                "url": url + "laporan/datajurnal",
                 "type": "POST",
                 "data": {
                     "tanggal": tanggal,
@@ -146,15 +145,16 @@
             },
             columnDefs: [{
 
-                targets: [2, 3, 4, 5, 6, 7],
+                targets: [0, 1, 2, 3, 4, 5, 6],
                 orderable: false,
             }],
             dom: 'Blfrtip',
             buttons: [{
                     extend: 'pdf',
                     text: 'Export pdf',
+                    title: 'Laporan Jurnal',
                     exportOptions: {
-                        columns: [0, 1] // Column index which needs to export
+                        columns: [0, 1, 2, 3, 4, 5, 6] // Column index which needs to export
                     }
                 },
 

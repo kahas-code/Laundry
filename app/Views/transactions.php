@@ -73,6 +73,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Nomor Transaksi</th>
                             <th>Nama Pelanggan</th>
                             <th>Kode Layanan</th>
                             <th>Harga Layanan</th>
@@ -159,7 +160,7 @@
                 }
             },
             columnDefs: [{
-                targets: [2, 3, 4, 5],
+                targets: [1, 2, 3, 4, 5, 6, 7, 8],
                 orderable: false,
             }],
 

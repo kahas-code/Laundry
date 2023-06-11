@@ -34,7 +34,7 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>transaksi/transaksi">Transaksi</a></li>
             <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>pembayaran">Pembayaran</a></li>
-            <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>jurnal">Jurnal</a></li>
+            <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>jurnal">Jurnal Umum</a></li>
           </ul>
         </div>
       </li>

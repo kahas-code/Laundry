@@ -10,7 +10,7 @@ class ServicesModel extends Model
     protected $primaryKey       = 'id_service';
     protected $allowedFields    = ['nama_service', 'harga_service', 'kode_service', 'updated_at'];
     protected $column_order     = ['id_service', 'nama_service', 'updated_at'];
-    protected $column_search    = ['nama_service'];
+    protected $column_search    = ['nama_service', 'kode_service'];
     protected $order            = ['id_service' => 'DESC'];
     protected $db;
     protected $dt;

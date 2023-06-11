@@ -43,7 +43,7 @@ class TransactionController extends BaseController
         $akuns = db_connect()->table('akun')->get()->getResult();
         $transactions = db_connect()->table('transactions')->where('status', 1)->get()->getResult();
         $data = [
-            'title' => 'Data Jurnal',
+            'title' => 'Data Jurnal Umum',
             'akuns' => $akuns,
             'transactions' => $transactions
         ];
@@ -53,7 +53,7 @@ class TransactionController extends BaseController
     {
         $post = $this->request->getPost();
         $post['total'] = str_replace(['Rp. ', '.'], '', $post['total']);
-        $post['transaction_number'] = 'TRX' . date('YmdHis');
+        $post['transaction_number'] = 'TRX' . date('-d-m-Y-') . str_pad($this->db->selectMax('id_transaction')->get()->getRow()->id_transaction + 1, 4, '0', STR_PAD_LEFT);
         try {
             $this->db->insert($post);
             return $this->response->setJSON(json_encode([
@@ -77,7 +77,8 @@ class TransactionController extends BaseController
             $no++;
             $row = [];
             $row[] = $no;
-            $row[] = ($list->costumer_code == 0 ? "Umum" : $list->nama_costumer);
+            $row[] = $list->transaction_number;
+            $row[] = ($list->id_costumer == 0 ? "Umum" : $list->nama_costumer);
             $row[] = $list->service_code;
             $row[] = 'Rp. ' . number_format($list->harga_service, 2, ',', '.');
             $row[] = $list->berat_pakaian . ' Kg';
@@ -137,7 +138,7 @@ class TransactionController extends BaseController
             $no++;
             $row = [];
             $row[] = $no;
-            $row[] = ($list->costumer_code == 0 ? "Umum" : $list->nama_costumer);
+            $row[] = ($list->id_costumer == 0 ? "Umum" : $list->nama_costumer);
             $row[] = 'Rp. ' . number_format($list->harga_service * $list->berat_pakaian, 2, ',', '.');
             $row[] = ($list->status == 0 ? "Belum Bayar" : "Sudah Bayar");
             $row[] = ($list->status == 0 ? '<button class="btn btn-success bayar" data-id="' . $list->id_transaction . '">Bayar</button>' : '<button class="btn btn-warning lihat" data-id="' . $list->id_transaction . '">Lihat</button>');

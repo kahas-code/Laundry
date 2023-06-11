@@ -32,6 +32,8 @@ class TransactionsModel extends Model
             $this->dt->where('status', $this->request->getPost('status'));
         if ($this->request->getPost('tanggal'))
             $this->dt->where('SUBSTRING(created_at,1,10)', $this->request->getPost('tanggal'));
+        if ($this->request->getPost('kode'))
+            $this->dt->like('transaction_number', $this->request->getPost('kode'));
         $i = 0;
         foreach ($this->column_search as $item) {
             if ($this->request->getPost('search')['value']) {

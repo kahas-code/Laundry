@@ -101,12 +101,12 @@
                         <span id="text-tanggal_jurnal"></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="kredit" id="kredit" class="form-control" placeholder="29/08/1999" autofocus required>
+                        <input type="text" name="kredit" id="kredit" class="form-control debit-kredit" placeholder="29/08/1999" autofocus required>
                         <label for="kredit">Kredit</label>
                         <span id="text-kredit"></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="debit" id="debit" class="form-control" placeholder="29/08/1999" autofocus required>
+                        <input type="text" name="debit" id="debit" class="form-control debit-kredit" placeholder="29/08/1999" autofocus required>
                         <label for="debit">Debit</label>
                         <span id="text-debit"></span>
                     </div>
@@ -149,10 +149,14 @@
                         required: true,
                     },
                     kredit: {
-                        required: true,
+                        required: function(element) {
+                            return (!$('#debit').hasClass('is-valid'));
+                        }
                     },
                     debit: {
-                        required: true,
+                        required: function(element) {
+                            return (!$('#kredit').hasClass('is-valid'));
+                        }
 
                     },
                 },
@@ -189,7 +193,7 @@
                 "type": "POST"
             },
             columnDefs: [{
-                targets: [2,3,4,5,6,7,8],
+                targets: [2, 3, 4, 5, 6, 7, 8],
                 orderable: false,
             }],
 
@@ -197,7 +201,7 @@
     }
     $('.add').on('click', function(event) {
         $('#no_trx').val("").trigger('change');
-                $('#no_akun').val("").trigger('change');
+        $('#no_akun').val("").trigger('change');
         $('.modal-title').text('Tambah data Jurnal');
         $('input').val('');
         event.preventDefault();
@@ -213,7 +217,7 @@
             $.ajax({
                 url: $(this).attr("action"),
                 type: "POST",
-                data: formData ,
+                data: formData,
                 success: function(response) {
                     if (response.status == 200) {
                         Swal.fire({

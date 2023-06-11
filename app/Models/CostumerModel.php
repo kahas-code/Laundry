@@ -8,9 +8,9 @@ class CostumerModel extends Model
 {
     protected $table            = 'costumers';
     protected $primaryKey       = 'id_costumer';
-    protected $allowedFields    = ['nama_costumer', 'kode_costumer', 'alamat', 'no_telp', 'updated_at'];
-    protected $column_order     = ['id_costumer', 'nama_costumer', 'updated_at'];
-    protected $column_search    = ['nama_costumer', 'kode_customer', 'alamat'];
+    protected $allowedFields    = ['nama_costumer', 'kode_costumer', 'alamat', 'no_telp'];
+    protected $column_order     = ['id_costumer', 'nama_costumer'];
+    protected $column_search    = ['nama_costumer', 'kode_costumer', 'alamat', 'no_telp'];
     protected $order            = ['id_costumer' => 'DESC'];
     protected $db;
     protected $dt;

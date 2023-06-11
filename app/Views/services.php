@@ -143,7 +143,7 @@
                 "type": "POST"
             },
             columnDefs: [{
-                targets: [2,3],
+                targets: [2,3,4],
                 orderable: false,
             }],
 
