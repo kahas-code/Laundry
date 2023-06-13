@@ -25,13 +25,13 @@ class AuthController extends BaseController
     {
         $post = $this->request->getPost();
 
-        $chekEmail = $this->db->where('username', $post['username'])->orWhere('email', $post['username'])->get();
+        $chekEmail = $this->db->where('username', $post['username'])->get();
 
 
         if ($chekEmail->resultID->num_rows == 0) {
             return $this->response->setJSON(json_encode([
                 'status' => 400,
-                'pesan' => 'Username atau Email tidak terdaftar!'
+                'pesan' => 'Username tidak terdaftar!'
             ]));
         } else {
             $data = $chekEmail->getRow();

@@ -63,13 +63,6 @@
             </div>
             <form action="" id="formuser">
                 <div class="modal-body" style="padding: 1vw 2vw 1vw !important;">
-
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="no_journal" id="no_journal" placeholder="Suheri">
-                        <label for="no_journal">Nomor Jurnal</label>
-                        <span id="text-no_journal"></span>
-                    </div>
                     <div class=" mb-3">
                         <label for="no_akun" class="form-label">Nama Akun</label>
                         <select name="no_akun" id="no_akun" class="form-select select2">
@@ -132,9 +125,6 @@
         if ($("form#formuser").length > 0) {
             $("form#formuser").validate({
                 rules: {
-                    no_jurnal: {
-                        required: true,
-                    },
                     no_akun: {
                         required: true,
                     },

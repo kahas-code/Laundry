@@ -52,6 +52,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Nomor Transaksi</th>
                             <th>Nama Pelanggan</th>
                             <th>Total</th>
                             <th>Status</th>

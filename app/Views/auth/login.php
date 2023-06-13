@@ -43,8 +43,8 @@
                 <div class="card-body">
                     <form class="form-signin" id="formlogin">
                         <div class="mb-3">
-                            <label for="inputEmail" class="form-label">Email address</label>
-                            <input type="text" name="username" class="form-control" placeholder="Username or Email Address" autofocus>
+                            <label for="inputEmail" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
                         </div>
                         <div class="mb-3">
                             <label for="inputPassword" class="form-label">Password</label>

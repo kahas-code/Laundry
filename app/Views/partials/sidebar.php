@@ -40,21 +40,21 @@
       </li>
     <?php } ?>
 
-    <?php if (session('userRole') == 0) { ?>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#laporan" aria-expanded="false" aria-controls="laporan">
-          <span class="menu-title">Laporan</span>
-          <i class="menu-arrow"></i>
-          <i class="mdi mdi-newspaper menu-icon"></i>
-        </a>
-        <div class="collapse" id="laporan">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/transaksi">Transaksi</a></li>
-            <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/jurnalumum">Jurnal Umum</a></li>
-          </ul>
-        </div>
-      </li>
-    <?php } ?>
+
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#laporan" aria-expanded="false" aria-controls="laporan">
+        <span class="menu-title">Laporan</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-newspaper menu-icon"></i>
+      </a>
+      <div class="collapse" id="laporan">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/transaksi">Transaksi</a></li>
+          <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/jurnalumum">Jurnal Umum</a></li>
+        </ul>
+      </div>
+    </li>
+
 
   </ul>
 </nav>

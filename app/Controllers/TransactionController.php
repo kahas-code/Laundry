@@ -115,7 +115,7 @@ class TransactionController extends BaseController
             $row[] = $list->kredit;
             $row[] = $list->debit;
             if (!$this->request->getPost('type'))
-                $row[] = '<a class="edit" style="margin-right:5px"  data-id="' . $list->id_journal . '"><i class="fa fa-pencil text-primary table-icon "></i></a> <a style="margin-right:5px" class=" delete" data-id="' . $list->id_journal . '"><i class="fa fa-trash text-danger table-icon"></i></a>';
+                $row[] = '<a class="edit" style="margin-right:5px"  data-id="' . $list->id_journal . '"><i class="fa fa-pencil text-primary table-icon "></i></a> ';
             $data[] = $row;
         }
 
@@ -138,6 +138,7 @@ class TransactionController extends BaseController
             $no++;
             $row = [];
             $row[] = $no;
+            $row[] = $list->transaction_number;
             $row[] = ($list->id_costumer == 0 ? "Umum" : $list->nama_costumer);
             $row[] = 'Rp. ' . number_format($list->harga_service * $list->berat_pakaian, 2, ',', '.');
             $row[] = ($list->status == 0 ? "Belum Bayar" : "Sudah Bayar");
@@ -249,6 +250,7 @@ class TransactionController extends BaseController
         $post = $this->request->getPost();
         if ($id == null) {
             try {
+                $post['no_journal'] = 'J-' . date('d-m-Y');
                 $this->db->insert($post);
                 return $this->response->setJSON(json_encode([
                     'status' => 200,
