@@ -49,8 +49,8 @@
       </a>
       <div class="collapse" id="laporan">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/transaksi">Transaksi</a></li>
-          <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/jurnalumum">Jurnal Umum</a></li>
+          <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/trx">Transaksi</a></li>
+          <li class="nav-item"> <a class="nav-link" href="<?= getenv('app.baseURL') ?>laporan/jrnl">Jurnal Umum</a></li>
         </ul>
       </div>
     </li>

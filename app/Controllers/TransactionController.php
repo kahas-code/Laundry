@@ -49,13 +49,17 @@ class TransactionController extends BaseController
         ];
         return view('journals', $data);
     }
-    public function Simpan()
+    public function Simpan($id = null)
     {
         $post = $this->request->getPost();
         $post['total'] = str_replace(['Rp. ', '.'], '', $post['total']);
-        $post['transaction_number'] = 'TRX' . date('-d-m-Y-') . str_pad($this->db->selectMax('id_transaction')->get()->getRow()->id_transaction + 1, 4, '0', STR_PAD_LEFT);
         try {
-            $this->db->insert($post);
+            if ($id == null) {
+                $post['transaction_number'] = 'TRX' . date('-d-m-Y-') . str_pad($this->db->selectMax('id_transaction')->get()->getRow()->id_transaction + 1, 4, '0', STR_PAD_LEFT);
+                $this->db->insert($post);
+            } else {
+                $this->db->update($id, $post);
+            }
             return $this->response->setJSON(json_encode([
                 'status' => 200,
                 'pesan' => 'Berhasil menambahkan transaksi'
@@ -84,7 +88,7 @@ class TransactionController extends BaseController
             $row[] = $list->berat_pakaian . ' Kg';
             $row[] = 'Rp. ' . number_format($list->harga_service * $list->berat_pakaian, 2, ',', '.');
             $row[] = ($list->status == 0 ? "Belum Bayar" : "Sudah Bayar");
-            $row[] = ($list->status == 0 ? '<a class="delete" data-id="' . $list->id_transaction . '"><i class="text-danger table-icon fa fa-trash"></i></a>' : '');
+            $row[] = ($list->status == 0 ? '<a class="edit" data-id="' . $list->id_transaction . '"><i class="text-warning table-icon fa fa-pencil"></i></a> <a class="delete" data-id="' . $list->id_transaction . '"><i class="text-danger table-icon fa fa-trash"></i></a> ' : '');
             $data[] = $row;
         }
 
@@ -250,7 +254,7 @@ class TransactionController extends BaseController
         $post = $this->request->getPost();
         if ($id == null) {
             try {
-                $post['no_journal'] = 'J-' . date('d-m-Y');
+                $post['no_journal'] = 'J-' . date('d-m-Y') . str_pad($this->db->selectMax('id_service')->get()->getRow()->id_service + 1, 5, '0', STR_PAD_LEFT);
                 $this->db->insert($post);
                 return $this->response->setJSON(json_encode([
                     'status' => 200,
@@ -275,6 +279,15 @@ class TransactionController extends BaseController
                     'pesan' => $err->getMessage()
                 ]));
             }
+        }
+    }
+    public function getTRX($id)
+    {
+        try {
+            $data = $this->db->where('id_transaction', $id)->get()->getRow();
+            return $this->response->setJSON(json_encode($data));
+        } catch (\Exception $err) {
+            return $err->getMessage();
         }
     }
 }

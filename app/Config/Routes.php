@@ -60,8 +60,10 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
     // routing menu transaksi
     $routes->get('/transaksi/transaksi', 'TransactionController::ViewTransaksi');
     $routes->post('/transaksi/simpan', 'TransactionController::Simpan');
+    $routes->post('/transaksi/simpan/(:num)', 'TransactionController::Simpan/$1');
     $routes->post('/transaksi/datatransaksi', 'TransactionController::TransactionData');
     $routes->get('/transaksi/hapustransaksi/(:num)', 'TransactionController::Delete/$1');
+    $routes->get('/transaksi/gettrx/(:num)', 'TransactionController::GetTRX/$1');
 
     // routing menu pembayaran
     $routes->get('/pembayaran', 'TransactionController::ViewPembayaran');
@@ -78,11 +80,11 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
 
 
     // routing menu laporan transaksi
-    $routes->get('/laporan/transaksi', 'ReportController::ViewTransactions');
+    $routes->get('/laporan/trx', 'ReportController::ViewTransactions');
     $routes->post('/laporan/datalaporantransaksi', 'ReportController::TransactionData');
 
     // routing menu laporan jurnal umum
-    $routes->get('/laporan/jurnalumum', 'ReportController::ViewJournal');
+    $routes->get('/laporan/jrnl', 'ReportController::ViewJournal');
     $routes->post('/laporan/datajurnal', 'ReportController::JournalData');
 });
 

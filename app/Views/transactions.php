@@ -28,7 +28,7 @@
                 <h5><?= $title ?></h5>
             </div>
             <div class="card-body">
-                <form action="" id="formtransaksi">
+                <form action="<?= getenv('app.baseURL') ?>transaksi/simpan" id="formtransaksi">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="kode_costumer">Nama Pelanggan</label>
@@ -60,6 +60,7 @@
 
                     </div>
                     <button type="submit" class="btn btn-success mt-2">Selesai</button>
+                    <button type="button" class="btn btn-info mt-2 reset">Reset</button>
                 </form>
             </div>
         </div>
@@ -181,7 +182,7 @@
             }
         })
     })
-    $('input[name="berat_pakaian"]').on('keyup paste change', function() {
+    $('input[name="berat_pakaian"]').on('keyup paste change keydown', function() {
         let berat = $(this).val();
         if (berat < 0) {
             $(this).val("0");
@@ -195,7 +196,7 @@
         event.preventDefault();
         if ($(this).valid()) {
             $.ajax({
-                url: url + 'transaksi/simpan',
+                url: $(this).attr('action'),
                 type: "POST",
                 data: {
                     service_code: $('#kode_layanan').val(),
@@ -204,7 +205,6 @@
                     total: $('input[name="total"]').val(),
                 },
                 success: function(response) {
-
                     if (response.status == 200) {
                         Swal.fire({
                             position: 'center',
@@ -273,5 +273,29 @@
             }
         })
     })
+    $('tbody').on('click', '.edit', function(event) {
+        event.preventDefault();
+        let id = $(this).data("id");
+        $.ajax({
+            url: url + 'transaksi/gettrx/' + id,
+            type: 'GET',
+            success: function(data) {
+                $('form#formtransaksi').attr('action', url + 'transaksi/simpan/' + id);
+                $('#kode_costumer').val(data.costumer_code).trigger('change');
+                $('#kode_layanan').val(data.service_code).trigger('change');
+                $('input[name="berat_pakaian"]').val(data.berat_pakaian);
+                $('input[name="total"]').val('Rp. ' + data.total);
+            }
+        })
+    })
+    $('.reset').on('click', function() {
+        $('form#formtransaksi').attr('action', url + 'transaksi/simpan/');
+        $('#kode_costumer').val('').trigger('change');
+        $('#kode_layanan').val('').trigger('change');
+        $('input[name="berat_pakaian"]').val('');
+        $('input[name="total"]').val('');
+        $('#jenis').val('');
+        $('#harga').val('');
+    });
 </script>
 <?= $this->endSection('content'); ?>

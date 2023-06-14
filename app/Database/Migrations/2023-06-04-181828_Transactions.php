@@ -28,7 +28,7 @@ class Transactions extends Migration
                 'constraint' => 7
             ],
             'berat_pakaian' => [
-                'type' => 'INT',
+                'type' => 'VARCHAR',
                 'constraint' => 5
             ],
             'total' => [
