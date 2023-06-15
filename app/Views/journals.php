@@ -94,16 +94,15 @@
                         <span id="text-tanggal_jurnal"></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="kredit" id="kredit" class="form-control debit-kredit" placeholder="29/08/1999" autofocus required>
-                        <label for="kredit">Kredit</label>
-                        <span id="text-kredit"></span>
-                    </div>
-                    <div class="form-floating mb-3">
                         <input type="text" name="debit" id="debit" class="form-control debit-kredit" placeholder="29/08/1999" autofocus required>
                         <label for="debit">Debit</label>
                         <span id="text-debit"></span>
                     </div>
-
+                    <div class="form-floating mb-3">
+                        <input type="text" name="kredit" id="kredit" class="form-control debit-kredit" placeholder="29/08/1999" autofocus required>
+                        <label for="kredit">Kredit</label>
+                        <span id="text-kredit"></span>
+                    </div>
 
 
                 </div>
