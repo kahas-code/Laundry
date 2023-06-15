@@ -74,8 +74,8 @@ class ReportController extends BaseController
             $row[] = $list->no_journal;
             $row[] = $list->no_trx;
             $row[] = $list->nama_akun;
-            $row[] = $list->kredit;
             $row[] = $list->debit;
+            $row[] = $list->kredit;
             $row[] = $list->keterangan;
             $data[] = $row;
         }

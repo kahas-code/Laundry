@@ -116,8 +116,8 @@ class TransactionController extends BaseController
             $row[] = $list->no_trx;
             $row[] = $list->keterangan;
             $row[] = $list->tanggal_jurnal;
-            $row[] = $list->kredit;
             $row[] = $list->debit;
+            $row[] = $list->kredit;
             if (!$this->request->getPost('type'))
                 $row[] = '<a class="edit" style="margin-right:5px"  data-id="' . $list->id_journal . '"><i class="fa fa-pencil text-primary table-icon "></i></a> ';
             $data[] = $row;
@@ -254,7 +254,7 @@ class TransactionController extends BaseController
         $post = $this->request->getPost();
         if ($id == null) {
             try {
-                $post['no_journal'] = 'J-' . date('d-m-Y') . str_pad($this->db->selectMax('id_service')->get()->getRow()->id_service + 1, 5, '0', STR_PAD_LEFT);
+                $post['no_journal'] = 'J-' . date('d-m-Y') . '-' . str_pad($this->db->selectMax('id_journal')->get()->getRow()->id_journal + 1, 5, '0', STR_PAD_LEFT);
                 $this->db->insert($post);
                 return $this->response->setJSON(json_encode([
                     'status' => 200,

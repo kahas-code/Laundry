@@ -101,8 +101,8 @@
                             <th>Nomor Jurnal</th>
                             <th>Nomor Transaksi</th>
                             <th>Nama Akun</th>
-                            <th>Kredit</th>
                             <th>Debit</th>
+                            <th>Kredit</th>
                             <th>Keterangan</th>
                         </tr>
                     </thead>

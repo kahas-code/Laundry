@@ -38,8 +38,8 @@
                             <th>Nomor Transaksi</th>
                             <th>Keterangan</th>
                             <th>Tanggal Jurnal</th>
-                            <th>Kredit</th>
                             <th>Debit</th>
+                            <th>Kredit</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
