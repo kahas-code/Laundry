@@ -70,7 +70,7 @@ class ReportController extends BaseController
         foreach ($lists as $list) {
             $no++;
             $row = [];
-            $row[] = $list->tanggal_jurnal;
+            $row[] = substr($list->tanggal_jurnal, 0, 10);
             $row[] = $list->no_journal;
             $row[] = $list->no_trx;
             $row[] = $list->nama_akun;
