@@ -40,7 +40,10 @@ class Journals extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '10'
             ],
-            'tanggal_jurnal datetime default current_timestamp',
+            'tanggal_jurnal' => [
+                'type' => 'VARCHAR',
+                'constraint' => '10'
+            ],
         ]);
         $this->forge->addKey('id_journal', true);
         $this->forge->createTable('journals');
